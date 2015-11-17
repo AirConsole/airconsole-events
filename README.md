@@ -10,14 +10,14 @@ Include the AirConsole javascript API file and the airconsole-events.js file.
 
 For example in controller.html:
 
-HTML:
+### HTML:
 
 ```html
   <script type="text/javascript" src="http://www.airconsole.com/api/airconsole-latest.js"></script>
   <script type="text/javascript" src="airconsole-events.js"></script>
 ```
 
-Javascript:
+### Setup:
 
 ```javascript
   var air_console = new AirConsole();
@@ -26,6 +26,11 @@ Javascript:
     // Put this into your onMessage function to listen for events
     this.dispatchEvent(device_id, data);
   };
+```
+
+### Usage:
+
+```javascript
 
   // --- Bind an event --- //
   // Event key is 'NEXT_ITEM'
