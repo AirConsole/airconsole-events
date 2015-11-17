@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="shared_styles.css">
+  </head>
+  <body>
+    <h1>Screen</h1>
+
+    <p>This is an example for using AirConsole-Events.</p>
+
+    <button id="broadcast">Broadcast event</button>
+
+    <div id="view" class="view"></div>
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="http://www.airconsole.com/api/airconsole-1.3.0.js"></script>
+  <!-- Extend AirConsole with events -->
+  <script type="text/javascript" src="../airconsole-events.js"></script>
+  <script type="text/javascript">
+    var view_ele = $('#view');
+    var air_console = new AirConsole();
+
+    air_console.onMessage = function(device_id, data) {
+      // Put this into your onMessage function to listen for events
+      this.dispatchEvent(device_id, data);
+    };
+
+    // Register an event handler for the 'print' event
+    var event_id = air_console.on('print', function(device_id, params) {
+      view_ele.append('Print event received - trigger function_1<br>');
+    });
+
+    // Register a second event handler for print
+    var event2_id = air_console.on('print', function(device_id, params) {
+      view_ele.append('Print event received - trigger function_2<br>');
+      // Deregister event 2
+      air_console.off(event2_id);
+      view_ele.append('Deregistered function_2 for events<br>');
+    });
+
+    // Broadcast an event to all controllers
+    $('#broadcast').on('click', function() {
+      air_console.broadcastEvent('hello', { greet: 'Servus' });
+    });
+
+  </script>
+  </body>
+</html>

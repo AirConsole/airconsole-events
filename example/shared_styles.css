@@ -1,0 +1,16 @@
+/*
+  This file is included by both screen.html and controller.html
+*/
+body {
+  background-color: #FFFFFF;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+.view {
+  width: 80%;
+  margin: auto;
+  margin-top: 50px;
+  padding: 20px;
+  border: 1px solid #3498db;
+}

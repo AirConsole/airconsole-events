@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="shared_styles.css">
+  </head>
+  <body>
+    <h1>Controller</h1>
+
+    <button id="send">SEND EVENT</button>
+
+    <div id="view" class="view"></div>
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="http://www.airconsole.com/api/airconsole-1.3.0.js"></script>
+  <script type="text/javascript" src="../airconsole-events.js"></script>
+  <script type="text/javascript">
+    var view_ele = $('#view');
+    var air_console = new AirConsole();
+
+    air_console.onMessage = function(device_id, data) {
+      this.dispatchEvent(device_id, data);
+    };
+
+    air_console.on('hello', function(from, data) {
+      view_ele.append('Hello broadcast from screen<br>');
+    });
+
+    $('#send').on('click', function() {
+      air_console.sendEvent(AirConsole.SCREEN, 'print');
+    });
+
+  </script>
+  </body>
+</html>
