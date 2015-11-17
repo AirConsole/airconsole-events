@@ -14,18 +14,18 @@
   <script type="text/javascript" src="../airconsole-events.js"></script>
   <script type="text/javascript">
     var view_ele = $('#view');
-    var air_console = new AirConsole();
+    var airconsole = new AirConsole();
 
-    air_console.onMessage = function(device_id, data) {
+    airconsole.onMessage = function(device_id, data) {
       this.dispatchEvent(device_id, data);
     };
 
-    air_console.on('hello', function(from, data) {
+    airconsole.on('hello', function(from, data) {
       view_ele.append('Hello broadcast from screen<br>');
     });
 
     $('#send').on('click', function() {
-      air_console.sendEvent(AirConsole.SCREEN, 'print');
+      airconsole.sendEvent(AirConsole.SCREEN, 'print');
     });
 
   </script>
