@@ -64,7 +64,7 @@
   AirConsole.prototype.sendEvent = function(to, event_name, params) {
     this.message(to, {
       event_name: event_name,
-      params, params
+      params: params
     });
   };
 
@@ -77,7 +77,7 @@
   AirConsole.prototype.broadcastEvent = function(event_name, params) {
     this.broadcast({
       event_name: event_name,
-      params, params
+      params: params
     });
   };
 
