@@ -1,6 +1,6 @@
 ### AirConsole-Events
 
-Extends AirConsole with event methods like .on() .off() and .sendEvent().
+Extends AirConsole with an event based approach and methods like .on() .off() and .sendEvent().
 
 ## How to use
 
@@ -8,9 +8,9 @@ You can use it on both, the screen and the controller.html.
 
 Include the AirConsole javascript API file and the airconsole-events.js file.
 
-For example in controller.html:
-
 ### HTML:
+
+Include the AirConsole API and the airconsole-events.js file:
 
 ```html
   <script type="text/javascript" src="https://www.airconsole.com/api/airconsole-latest.js"></script>
@@ -31,12 +31,11 @@ For example in controller.html:
 ### Usage:
 
 ```javascript
-
   // --- Bind an event --- //
-  // Event key is 'NEXT_ITEM'
-  // Callback returns the sender device_id and optional the send params
-  // on() returns a unique event id. Use it for off() unbinding events
-  var event_id = air_console.on('NEXT_ITEM', function(device_id, params) {
+  // The event key is 'MOVE_DOWN'
+  // Callback returns the sender device_id and optional some params
+  // .on() returns an unique event id. Use it with .off() to unbind events
+  var event_id = air_console.on('MOVE_DOWN', function(device_id, params) {
     // do s.t. cool here ...
   });
 
@@ -53,5 +52,4 @@ For example in controller.html:
   air_console.broadcastEvent('MOVE_DOWN', {
     distance: 10
   });
-
 ```
