@@ -1,6 +1,29 @@
 ### AirConsole-Events
 
 Extends AirConsole with an event based approach and methods like .on() .off() and .sendEvent().
+(NOT WORKING FOR AIRCONSOLE PLUGINS - like Unity or Construct2)
+
+## But why?
+
+Short: it makes your code cleaner.
+Instead of processing all incoming messages in the .onMessage() method:
+
+```javascript
+  air_console.onMessage = function(device_id, data) {
+    if (data.action) {
+      // ...
+    if (data.show_view) {
+      // ...
+  };
+```
+
+You can listen for "message-events" and don't have to write all your
+logic in the onMessage() method:
+
+```javascript
+  air_console.on('SOME_ACTION', function(device_id, data) { // ...
+  air_console.on('SHOW_MAIN_VIEW', function(device_id, data) { // ...
+```
 
 ## How to use
 
