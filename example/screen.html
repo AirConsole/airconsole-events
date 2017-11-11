@@ -8,16 +8,29 @@
     <p>This is an example for using AirConsole-Events.</p>
 
     <button id="broadcast">Broadcast event</button>
+    <button id="change_position">Change position property</button>
 
     <div id="view" class="view"></div>
 
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script type="text/javascript" src="//www.airconsole.com/api/airconsole-1.3.0.js"></script>
+  <script type="text/javascript" src="//www.airconsole.com/api/airconsole-latest.js"></script>
   <!-- Extend AirConsole with events -->
   <script type="text/javascript" src="../airconsole-events.js"></script>
   <script type="text/javascript">
     var view_ele = $('#view');
     var airconsole = new AirConsole();
+
+    var setCustomState = function(value) {
+      airconsole.setCustomDeviceStateProperty("position", value);
+    };
+
+    airconsole.onReady = function() {
+      // Set an inital value for the position property
+      setCustomState({
+        x: 1,
+        y: 3
+      });
+    };
 
     airconsole.onMessage = function(device_id, data) {
       // Put this into your onMessage function to listen for events
@@ -41,6 +54,21 @@
     $('#broadcast').on('click', function() {
       airconsole.broadcastEvent('hello', { greet: 'Servus' });
     });
+
+    // Change the custom-data property 'position'
+    $('#change_position').on('click', function() {
+      setCustomState({
+        x: getRandomInt(0, 100),
+        y: getRandomInt(0, 100)
+      });
+    });
+
+    // Just a helper function
+    function getRandomInt(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min)) + min;
+    }
 
   </script>
   </body>
