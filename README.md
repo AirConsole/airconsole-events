@@ -86,7 +86,18 @@ the value has changed.
 
 ### Usage:
 
-For example the controller wants to observe a "position" property of the screen.
+For example the screen has a "position" property and a controller wants to observe it
+
+```json
+  {
+    position: {
+      x: 2,
+      y: 10
+    }
+  }
+```
+
+To observe the property we can use ``observeCustomProperty()`` on the controller:
 
 ```javascript
   // --- On the Screen --- //
