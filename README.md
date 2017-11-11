@@ -88,11 +88,12 @@ the value has changed.
 
 For example the screen has a "position" property and a controller wants to observe it
 
+Screen custom data:
 ```json
   {
-    position: {
-      x: 2,
-      y: 10
+    "position": {
+      "x": 2,
+      "y": 10
     }
   }
 ```
