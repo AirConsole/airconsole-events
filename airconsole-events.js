@@ -89,7 +89,7 @@
    */
   AirConsole.prototype.dispatchEvent = function(device_id, message_data) {
     var event_name = message_data.event_name;
-    var params = message_data.params || null;
+    var params = message_data.params;
     if (event_name) {
       var evts = this.events[event_name];
       if (evts) {
@@ -113,7 +113,7 @@
    * @param {Object} custom_data
    */
   AirConsole.prototype.evaluateCustomData = function(device_id, data) {
-    var custom_data = data.custom;
+    var custom_data = data.custom || data;
     if (!custom_data) return;
     for (var target_device_id in this.observe_map) {
       var properties = this.observe_map[target_device_id];
