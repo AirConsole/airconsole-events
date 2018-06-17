@@ -26,17 +26,25 @@
    * Binds event to a function. Returns id which can be used to unbind the function again.
    * @params {String} event_name - The name of the event
    * @params {Function} callback - A callback function to execute when the event triggers
+   * @params {Object} context - The context the callback function should be executed in
    * @return {String}
    */
-  AirConsole.prototype.on = function(event_name, callback) {
+  AirConsole.prototype.on = function(event_name, callback, context) {
     if (!event_name) throw "Missing param event_name.";
     if (typeof callback !== 'function') throw "Event callback is not a function";
 
-    if(!this.events[event_name]) {
+    var id = this.randomId();
+
+    if (!this.events[event_name]) {
       this.events[event_name] = {};
     }
-    var id = this.randomId();
+
+    if (context) {
+      callback.bind(context);
+    }
+
     this.events[event_name][id] = callback;
+
     return id;
   };
 
