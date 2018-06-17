@@ -23,7 +23,7 @@ You can listen for "message-events" and don't have to write all your
 logic in the onMessage() method:
 
 ```javascript
-  airconsole.on('SOME_ACTION', function(device_id, data) { // ...
+  airconsole.on('SOME_ACTION', function(device_id, data, this) { // ...
   airconsole.on('SHOW_MAIN_VIEW', function(device_id, data) { // ...
 ```
 
@@ -60,7 +60,7 @@ Include the AirConsole API and the airconsole-events.js file:
   // The event key is 'MOVE_DOWN'
   // Callback returns the sender device_id and optional some params
   // .on() returns an unique event id. Use it with .off() to unbind events
-  var event_id = airconsole.on('MOVE_DOWN', function(device_id, params) {
+  var event_id = airconsole.on('MOVE_DOWN', function(device_id, params, context) {
     // do s.t. cool here ...
   });
 
