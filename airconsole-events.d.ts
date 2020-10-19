@@ -2,7 +2,7 @@ export class AirConsoleEvents {
   /**
   * Returns eventId for .off
   */
-  on: <T>(eventName: string, cb: (device_id: number, data: T) => void, context?: any) => number;
+  on: <T>(eventName: string, cb: (device_id: number, params: T) => void, context?: any) => number;
 
   /**
   * eventId from .on
@@ -12,19 +12,19 @@ export class AirConsoleEvents {
   /**
    * Sends event to a device, if device_id is undefined sends to all OTHER devices
    */
-  sendEvent: <T>(device_id: number | undefined, eventName: string, data: T) => void;
+  sendEvent: <T>(device_id: number | undefined, eventName: string, params: T) => void;
 
   /**
    * Broadcasts to all other devices
    */
-  broadcastEvent: <T>(eventName: string, data: T) => void;
+  broadcastEvent: <T>(eventName: string, params: T) => void;
 
   setCustomDeviceStateProperty: <T>(property: string, data: T) => void;
 
   /**
    * Call this inside your airconsole.onMessage();
    */
-  dispatchEvent: <T>(device_id: number, data: {event_name: string, params: T}) => void;
+  dispatchEvent: <T>(device_id: number, data: { event_name: string, params?: T }) => void;
 
   /**
    * Call this inside airconsole.onDeviceStateChange();
