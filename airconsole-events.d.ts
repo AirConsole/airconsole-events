@@ -24,7 +24,7 @@ export class AirConsoleEvents {
   /**
    * Call this inside your airconsole.onMessage();
    */
-  dispatchEvent: <T>(device_id: number, data: T) => void;
+  dispatchEvent: <T>(device_id: number, data: {event_name: string, params: T}) => void;
 
   /**
    * Call this inside airconsole.onDeviceStateChange();
