@@ -121,3 +121,6 @@ To observe the property we can use ``observeCustomProperty()`` on the controller
 ```
 
 Make sure observing and setting the custom data happens after ``onReady`` has been called!
+
+### Typescript:
+Inorder for typescript to recognize the extension of your ```AirConsole``` variable, when declaring the type of it use: ```const airconsole: AirConsole & AirConsoleEvents = new AirConsole()``` or if ```AirConsole``` was initialized already use ```declare const airconsole: AirConsole & AirConsoleEvents```
